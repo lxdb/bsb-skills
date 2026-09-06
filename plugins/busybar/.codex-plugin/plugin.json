@@ -1,15 +1,15 @@
 {
   "name": "busybar",
-  "version": "0.1.0",
-  "description": "Design native BUSY Bar visuals and produce bsbctl scenes or standalone animations.",
+  "version": "0.2.0",
+  "description": "Design native BUSY Bar visuals, produce scenes and animations, and interact with the device.",
   "author": {
     "name": "BUSY Bar contributors"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "BUSY Bar",
-    "shortDescription": "Design and build native BUSY Bar visuals.",
-    "longDescription": "Create native BUSY Bar designs, translate an approved design into a tested bsbctl scene, or produce a standalone 72x16 animation.",
+    "shortDescription": "Design BUSY Bar visuals and interact with the device.",
+    "longDescription": "Create native BUSY Bar designs, build bsbctl scenes and animations, inspect device screens and events, or send drawing, sound and BUSY-session commands.",
     "developerName": "BUSY Bar contributors",
     "category": "Productivity",
     "capabilities": [
@@ -19,6 +19,6 @@
     ],
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png",
-    "defaultPrompt": "Choose the BUSY Bar skill that matches the task: design native visuals, build an approved bsbctl scene, or produce an approved standalone animation."
+    "defaultPrompt": "Choose the BUSY Bar skill that matches the task: design visuals, build scenes or animations, or interact directly with the device."
   }
 }

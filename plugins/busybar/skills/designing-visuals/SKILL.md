@@ -71,3 +71,5 @@ The first check validates structure and matching approval bindings. The second c
 Set `handoff.production_kind` to `bsbctl_scene` for `$busybar:building-bsbctl-scenes`, or `standalone_animation` for `$busybar:producing-animations`. Supply the JSON, selected specification, native artifacts, and required source assets together.
 
 If production changes the approved composition or behavior, revise the candidate and its bindings. Report the selection, artifacts, verification results, and remaining physical checks. Device writes and publication require the user's authorization for those operations.
+
+When the task includes showing a native candidate or generated asset on the physical device, use `$busybar:interacting-with-device` to upload, draw, and capture it. Device preview does not change a pending design selection into approval.

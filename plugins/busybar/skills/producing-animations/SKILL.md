@@ -49,3 +49,5 @@ When catalog integration applies, run its drift check after generation and its r
 Report the approved revision, output paths/digests, frame count/duration, QA, deterministic rebuild, compiler/catalog results, and unresolved physical checks. If a required tool or check fails, report that exact boundary rather than changing the output contract silently.
 
 Device installation/playback and publication follow the user's authorization for those operations. Reuse authorization already provided; do not treat compilation or a connected device as a request to write to it.
+
+When device playback is requested, use `$busybar:interacting-with-device` to upload the compiled `.anim`, draw it or use it as a BUSY-theme background, and inspect the device output. Catalog publication remains a separate operation.

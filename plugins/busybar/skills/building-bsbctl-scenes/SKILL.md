@@ -53,3 +53,5 @@ Render deterministic scenes from production paths with fixed data/time. Compare 
 Report the selected design, files changed, tests, native comparisons, and any unverified rendering or hardware behavior. Do not claim a scene matches the approved pixels when the required renderer was unavailable.
 
 Obtain a revised selection if implementation requires a material design change. Use already authorized device operations only for their stated purpose; building a scene alone does not request installation, restart, or publication.
+
+Use `$busybar:interacting-with-device` when the task calls for device screenshots, input injection, or event capture to verify the running scene. Direct draws can compete with the host renderer, so inspect the scene without substituting a separate drawing.

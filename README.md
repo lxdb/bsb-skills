@@ -1,6 +1,6 @@
 # BUSY Bar plugin for Codex
 
-Use this plugin to design native BUSY Bar visuals and turn an approved design into a bsbctl scene or a standalone animation.
+Use this plugin to design native BUSY Bar visuals, turn an approved design into a bsbctl scene or standalone animation, and interact directly with the device.
 
 The front display is 72x16. The optional back display is 160x80. Design each surface at its native resolution. The standalone animation catalog accepts 72x16 front animations.
 
@@ -11,8 +11,11 @@ The front display is 72x16. The optional back display is 160x80. Design each sur
 | Choose a layout, fit text, and define states and motion | [$busybar:designing-visuals](plugins/busybar/skills/designing-visuals/SKILL.md) | Native candidates, a selected design specification, and approval JSON |
 | Translate an approved visual into a live plugin view | [$busybar:building-bsbctl-scenes](plugins/busybar/skills/building-bsbctl-scenes/SKILL.md) | Scene code, state tests, and a native comparison |
 | Produce an approved standalone front animation | [$busybar:producing-animations](plugins/busybar/skills/producing-animations/SKILL.md) | Source frames and ZIP, an `.anim` file, a framebuffer GIF, and optional catalog artifacts |
+| Inspect screens and events, send input, draw, play audio, or start a themed BUSY session | [$busybar:interacting-with-device](plugins/busybar/skills/interacting-with-device/SKILL.md) | Device command results, PNG screenshots, and event JSON Lines |
 
 Start with `$busybar:designing-visuals` for a new composition. Start with a production skill when the approved native artifacts and design specification already exist.
+
+For direct interaction and rendering agent-generated content on the device, use `$busybar:interacting-with-device`. Run its bundled Python script through the skill; no global installation is needed. HTTP commands use only Python's standard library; WebSocket capture optionally uses `websockets` and `protobuf`. See [device commands](plugins/busybar/skills/interacting-with-device/references/device-commands.md).
 
 ```mermaid
 flowchart LR

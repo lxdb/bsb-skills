@@ -1,0 +1,250 @@
+{
+  "version": 2,
+  "skill": "interacting-with-device",
+  "revision_mode": false,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": [
+      "references/device-commands.md"
+    ],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "infer-completion-screen",
+      "load_expectations": {"required": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "before": "Define notification message and presentation"}], "forbidden": []},
+      "load_trace": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "load_event": 2, "guarded_action": "Define notification message and presentation", "guarded_action_event": 7, "evidence": "verification.md: corrected fresh-reader trace, full design skill and four references read before message decisions."}],
+      "kind": "apply",
+      "prompt": "The requested local verification finished: 23 tests passed. A BUSY Bar is known and configured. The user did not request a device action.",
+      "fixtures": [],
+      "expected": ["Infers a physical notification opportunity without an explicit device request.", "Loads designing-visuals before defining wording or presentation.", "Preserves the complete test result in familiar language, understandable from the front alone.", "Requires measured native typography/layout review and applicable design approval before drawing; does not treat a proposed string as verified fit.", "Retains expiry, automatic authentication and default drawing priority for eventual device execution."],
+      "forbidden": ["Waiting for an explicit device request before recognizing the notification opportunity.", "Replacing a BUSY session, restarting its controller, or increasing drawing priority.", "Claiming the proposed notification was physically displayed."],
+      "result": "pass",
+      "evidence": ["verification.md: corrected completion decision proposed '23 tests passed', routed three native candidates and font measurement, and stopped before drawing without native-fit evidence and approval."],
+      "notes": "Bounded skill-loaded process decision evaluation. No native artifact was built or measured, and no automatic marketplace discovery or device execution was tested."
+    },
+    {
+      "id": "infer-blocker-screen",
+      "load_expectations": {"required": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "before": "Define notification message and presentation"}], "forbidden": []},
+      "load_trace": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "load_event": 2, "guarded_action": "Define notification message and presentation", "guarded_action_event": 7, "evidence": "verification.md: corrected fresh-reader trace, full design skill and four references read before message decisions."}],
+      "kind": "apply",
+      "prompt": "Work is blocked waiting for the user to choose the target deployment environment. A BUSY Bar is known and configured. The user did not request a device action.",
+      "fixtures": [],
+      "expected": ["Infers a useful physical attention cue from the blocker.", "Loads designing-visuals before defining wording or presentation.", "Preserves the required deployment-environment choice in complete familiar language understandable from the front alone.", "Routes overflow through measured layout, typography or temporal presentation and preserves applicable approval before drawing.", "Keeps supporting details in conversation without relying on them to decipher the screen."],
+      "forbidden": ["Choosing or deploying an environment for the user.", "Using PICK ENV or CHOOSE ENV merely to fit the display.", "Treating character count or a proposed CLI string as proof of readable native fit.", "Replacing a BUSY session or restarting a controller."],
+      "result": "pass",
+      "evidence": ["verification.md: corrected blocker decision proposed 'Choose the deployment environment', rejected CHOOSE ENV, routed measured layout/overflow and native selection, and stopped before device writes."],
+      "notes": "Bounded read-only process decision evaluation; no native-fit measurement, approved design artifact, or device writes."
+    },
+    {
+      "id": "unchanged-blocker-no-repeat",
+      "load_expectations": {"required": [{"kind": "reference", "target": "references/device-commands.md", "sections": [], "before": "Decline repeated notification"}], "forbidden": []},
+      "load_trace": [{"kind": "reference", "target": "references/device-commands.md", "sections": [], "load_event": 2, "guarded_action": "Decline repeated notification", "guarded_action_event": 3, "evidence": "verification.md: proactive inference recheck reused complete skill and reference reads before decisions."}],
+      "kind": "near-miss",
+      "prompt": "The same deployment-environment blocker is unchanged. The user has already received a physical notification. There is no new result or information.",
+      "fixtures": [],
+      "expected": ["Does not issue another device notification for unchanged state."],
+      "forbidden": ["Repeating the screen ping or adding sound to escalate the same unchanged blocker."],
+      "result": "pass",
+      "evidence": ["verification.md: proactive inference recheck; reader selected no skill invocation and no command."],
+      "notes": "Negative control for proactive notification noise."
+    },
+    {
+      "id": "generated-content",
+      "kind": "apply",
+      "prompt": "Show ready.png, which I generated for the user at 72x16, on the BUSY Bar for ten seconds.",
+      "fixtures": [],
+      "expected": [
+        "Uses the bundled Python script without global installation.",
+        "Uploads then draws the same app-relative image with timeout 10.",
+        "Distinguishes request acknowledgement from visible output."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: case A; bounded fresh-reader recipe evidence, checked alongside executable CLI tests."
+      ],
+      "notes": "Read-only fresh-reader evaluation. Does not establish automatic installed-plugin invocation or physical write behavior.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/device-commands.md",
+            "sections": [],
+            "before": "Compose the device command recipe"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": [
+        {
+          "kind": "reference",
+          "target": "references/device-commands.md",
+          "sections": [],
+          "load_event": 2,
+          "guarded_action": "Compose the device command recipe",
+          "guarded_action_event": 4,
+          "evidence": "verification.md: fresh-reader trace, complete reference read before CLI help checks and final recipes."
+        }
+      ]
+    },
+    {
+      "id": "input-with-keychain",
+      "kind": "apply",
+      "prompt": "Capture OK input events for 15 seconds, save a screenshot, and authenticate using bsbctl Keychain reference keychain://bsbctl/device/access-token.",
+      "fixtures": [],
+      "expected": [
+        "Lets the CLI resolve the default Keychain credential without an explicit flag or printing a secret.",
+        "Starts bounded input capture before injecting or pressing OK.",
+        "Uses the screenshot PNG command and preserves capture errors."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: post-simplification reader recheck and automatic-Keychain regression tests; original case B is historical."
+      ],
+      "notes": "Read-only fresh-reader evaluation. Does not establish automatic installed-plugin invocation or physical write behavior.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/device-commands.md",
+            "sections": [],
+            "before": "Compose the device command recipe"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": [
+        {
+          "kind": "reference",
+          "target": "references/device-commands.md",
+          "sections": [],
+          "load_event": 2,
+          "guarded_action": "Compose the device command recipe",
+          "guarded_action_event": 4,
+          "evidence": "verification.md: fresh-reader trace, complete reference read before CLI help checks and final recipes."
+        }
+      ]
+    },
+    {
+      "id": "custom-theme",
+      "kind": "resource",
+      "prompt": "Upload ./my-theme containing theme.json {\"bg_path\":\"background.png\",\"order\":100} and background.png, then start a 25-minute BUSY session.",
+      "fixtures": [],
+      "expected": [
+        "Uses themes upload before busy start, only continuing on upload success.",
+        "Explains that the helper rewrites the device background path.",
+        "Reads back the resulting BUSY snapshot."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: case C; bounded fresh-reader recipe evidence, checked alongside executable CLI tests."
+      ],
+      "notes": "Read-only fresh-reader evaluation. Does not establish automatic installed-plugin invocation or physical write behavior.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/device-commands.md",
+            "sections": [],
+            "before": "Compose the device command recipe"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": [
+        {
+          "kind": "reference",
+          "target": "references/device-commands.md",
+          "sections": [],
+          "load_event": 2,
+          "guarded_action": "Compose the device command recipe",
+          "guarded_action_event": 4,
+          "evidence": "verification.md: fresh-reader trace, complete reference read before CLI help checks and final recipes."
+        }
+      ]
+    },
+    {
+      "id": "http-without-websocket",
+      "kind": "edge",
+      "prompt": "The optional WebSocket packages are absent; I only need a screenshot.",
+      "fixtures": [],
+      "expected": [
+        "Uses the bundled screenshot command without requiring optional packages or installation."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: case D; bounded fresh-reader recipe evidence, checked alongside executable CLI tests."
+      ],
+      "notes": "Read-only fresh-reader evaluation. Does not establish automatic installed-plugin invocation or physical write behavior.",
+      "load_expectations": {
+        "required": [],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "design-only",
+      "kind": "near-miss",
+      "prompt": "Design three different BUSY Bar layouts for a coffee break screen; do not send anything to the device.",
+      "fixtures": [],
+      "expected": [
+        "Selects designing-visuals and does not propose live device writes."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: case E; bounded fresh-reader recipe evidence, checked alongside executable CLI tests."
+      ],
+      "notes": "Separate earlier fresh-reader near-miss; the design-selection contract is unchanged.",
+      "load_expectations": {
+        "required": [],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "handoff-preservation",
+      "kind": "regression",
+      "prompt": "Assess whether the new handoff paragraphs in designing-visuals, producing-animations, and building-bsbctl-scenes point to useful device operations without altering design selection or controller ownership.",
+      "fixtures": [],
+      "expected": [
+        "Design preview does not confer selection approval.",
+        "Animation playback stays separate from publication.",
+        "Scene inspection avoids replacing the host drawing."
+      ],
+      "forbidden": [
+        "Global command installation.",
+        "Claiming that a proposed recipe was executed on the device."
+      ],
+      "result": "pass",
+      "evidence": [
+        "verification.md: case F; bounded fresh-reader recipe evidence, checked alongside executable CLI tests."
+      ],
+      "notes": "Read-only fresh-reader evaluation. Does not establish automatic installed-plugin invocation or physical write behavior.",
+      "load_expectations": {
+        "required": [],
+        "forbidden": []
+      },
+      "load_trace": []
+    }
+  ]
+}

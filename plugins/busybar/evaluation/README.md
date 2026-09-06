@@ -7,6 +7,7 @@ Use these files to maintain the skills. They are not prerequisites for design or
 | [Coverage](coverage.md) | Account for useful source topics and deliberate omissions |
 | [Local review](review-results.md) | Record reader walkthroughs and executable checks |
 | Per-skill `cases.json` | Exercise practical design and production tasks with a fresh reader/agent |
+| [Device interaction verification](interacting-with-device/verification.md) | CLI contract tests, live read evidence, and bounded fresh-reader recipes |
 | [Initial evaluation history](history/README.md) | Preserve results for the earlier skill revision |
 
 From the plugin root, run the design tests with Python's standard library. Run animation tests in a Python environment with Pillow:

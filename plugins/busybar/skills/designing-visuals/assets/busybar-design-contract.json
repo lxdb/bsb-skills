@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "artifact_id": "focus-status-v1",
+  "intent": {
+    "message": "FOCUS",
+    "meaning": "The user is in a protected focus period.",
+    "priority": "normal",
+    "freshness": "fresh"
+  },
+  "targets": [
+    {
+      "surface": "front",
+      "width": 72,
+      "height": 16,
+      "role": "Primary glanceable status",
+      "required": true
+    },
+    {
+      "surface": "back",
+      "width": 160,
+      "height": 80,
+      "role": "Optional supporting context",
+      "required": false
+    }
+  ],
+  "constraints": {
+    "language": "en",
+    "required_content": ["FOCUS"],
+    "forbidden_content": [],
+    "palette_roles": {
+      "background": "black",
+      "primary": "calm-status",
+      "attention": "reserved-for-state-change"
+    },
+    "motion_intent": "Keep the word stable; use no motion in the initial design."
+  },
+  "candidates": [
+    {
+      "id": "focus-a",
+      "design_spec": null,
+      "revision": 1,
+      "rationale": "Dominant wordmark optimized for immediate recognition.",
+      "tradeoffs": ["Leaves little room for supporting context."],
+      "status": "review_only",
+      "artifacts": [
+        {
+          "surface": "front",
+          "path": "candidates/focus-a-front.png",
+          "width": 72,
+          "height": 16,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "focus-b",
+      "design_spec": null,
+      "revision": 1,
+      "rationale": "Icon and label divide recognition across shape and text.",
+      "tradeoffs": ["The label receives less horizontal space."],
+      "status": "review_only",
+      "artifacts": [
+        {
+          "surface": "front",
+          "path": "candidates/focus-b-front.png",
+          "width": 72,
+          "height": 16,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "id": "focus-c",
+      "design_spec": null,
+      "revision": 1,
+      "rationale": "A fixed status rail preserves identity beside the label.",
+      "tradeoffs": ["The rail consumes several horizontal pixels."],
+      "status": "review_only",
+      "artifacts": [
+        {
+          "surface": "front",
+          "path": "candidates/focus-c-front.png",
+          "width": 72,
+          "height": 16,
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  ],
+  "selection_gate": {
+    "status": "pending",
+    "selected_candidate_id": null,
+    "selected_revision": null,
+    "approval_record": null
+  },
+  "verification": {
+    "contract": "pending",
+    "native_artifacts": "pending",
+    "hardware": "unknown"
+  },
+  "handoff": {
+    "production_kind": "bsbctl_scene",
+    "notes": "Choose bsbctl_scene or standalone_animation after approval."
+  }
+}

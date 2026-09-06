@@ -1,0 +1,6 @@
+interface:
+  display_name: "Building bsbctl Scenes"
+  short_description: "Implement approved designs as stable bsbctl scenes"
+  icon_small: "assets/logo.png"
+  icon_large: "assets/logo.png"
+  default_prompt: "Use $busybar:building-bsbctl-scenes to translate an approved native visual and design specification into a tested protocol.Scene."

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "width": 72,
+  "height": 16,
+  "fps": 60,
+  "expected_frame_count": 120,
+  "allow_transparency": false,
+  "stable_regions": [
+    {"name": "wait-label", "x": 18, "y": 0, "width": 54, "height": 16, "max_changed_pixels": 0}
+  ],
+  "motion_regions": [
+    {"name": "loader", "x": 0, "y": 0, "width": 16, "height": 16, "min_changed_transitions": 7}
+  ],
+  "max_changed_pixels_outside_motion_regions": 0,
+  "max_changed_pixel_fraction_per_transition": 0.01,
+  "max_mean_luminance_delta_per_transition": 0.01,
+  "max_loop_seam_changed_pixel_fraction": 0.01,
+  "framebuffer_duration_tolerance_milliseconds": 0
+}

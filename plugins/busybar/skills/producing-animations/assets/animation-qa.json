@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "width": 72,
+  "height": 16,
+  "fps": 60,
+  "expected_frame_count": 60,
+  "allow_transparency": false,
+  "stable_regions": [
+    {
+      "name": "approved-status",
+      "x": 16,
+      "y": 3,
+      "width": 52,
+      "height": 10,
+      "max_changed_pixels": 0
+    }
+  ],
+  "motion_regions": [
+    {
+      "name": "semantic-cue",
+      "x": 2,
+      "y": 4,
+      "width": 10,
+      "height": 8,
+      "min_changed_transitions": 1
+    }
+  ],
+  "max_changed_pixels_outside_motion_regions": 0,
+  "max_changed_pixel_fraction_per_transition": 0.1,
+  "max_mean_luminance_delta_per_transition": 0.08,
+  "max_loop_seam_changed_pixel_fraction": 0.1,
+  "framebuffer_duration_tolerance_milliseconds": 20
+}

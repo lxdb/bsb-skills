@@ -1,0 +1,6 @@
+interface:
+  display_name: "Designing BUSY Bar Visuals"
+  short_description: "Design native BUSY Bar candidates and approval handoffs"
+  icon_small: "assets/logo.png"
+  icon_large: "assets/logo.png"
+  default_prompt: "Use $busybar:designing-visuals to create and approve exact native-resolution BUSY Bar design candidates before production."

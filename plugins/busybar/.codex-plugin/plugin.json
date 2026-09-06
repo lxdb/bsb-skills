@@ -1,0 +1,24 @@
+{
+  "name": "busybar",
+  "version": "0.1.0",
+  "description": "Design native BUSY Bar visuals and produce bsbctl scenes or standalone animations.",
+  "author": {
+    "name": "BUSY Bar contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "BUSY Bar",
+    "shortDescription": "Design and build native BUSY Bar visuals.",
+    "longDescription": "Create native BUSY Bar designs, translate an approved design into a tested bsbctl scene, or produce a standalone 72x16 animation.",
+    "developerName": "BUSY Bar contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Design",
+      "Write",
+      "Review"
+    ],
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png",
+    "defaultPrompt": "Choose the BUSY Bar skill that matches the task: design native visuals, build an approved bsbctl scene, or produce an approved standalone animation."
+  }
+}

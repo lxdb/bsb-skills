@@ -1,0 +1,20 @@
+{
+  "name": "busybar",
+  "interface": {
+    "displayName": "BUSY Bar"
+  },
+  "plugins": [
+    {
+      "name": "busybar",
+      "source": {
+        "source": "local",
+        "path": "./plugins/busybar"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

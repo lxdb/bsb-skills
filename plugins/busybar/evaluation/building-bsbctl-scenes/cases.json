@@ -1,0 +1,197 @@
+{
+  "version": 2,
+  "skill": "building-bsbctl-scenes",
+  "revision_mode": true,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": [
+      "references/scene-construction.md",
+      "references/scene-protocol.md"
+    ],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "github-notification-conversion",
+      "kind": "apply",
+      "prompt": "Implement the bundled GitHub notification specification for review requested, mentioned, no unread items, setup required, and connection failed.",
+      "fixtures": [],
+      "expected": [
+        "Use the bundled 16x16 GitHub mark, product palette, native text, and independent marquee viewports on both required surfaces.",
+        "Preserve complete reason-first headlines, repositories, and actions without private abbreviations.",
+        "Preserve IDs, kinds, order, anchors, and state meaning; run the example tests."
+      ],
+      "forbidden": [
+        "Replace GitHub identity with the fallback palette.",
+        "Compress the message into GH, REV, NTFN, or AUTH.",
+        "Claim compilation proves pixel fidelity."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/scene-construction.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/scene-protocol.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "calendar-native-primitives",
+      "kind": "edge",
+      "prompt": "Translate the 16x16 calendar identity, 54px secondary title, and fixed future countdown into scene elements. Scrolling is 18px/s.",
+      "fixtures": [],
+      "expected": [
+        "Use an asset at native size, bounded text, and CountdownElement.",
+        "Use 1080 pixels/minute for marquee and milliseconds for its delays.",
+        "Explain the countdown's fixed font/format boundary."
+      ],
+      "forbidden": [
+        "Set TextElement.Font to superscript.",
+        "Count animation frames to derive the deadline.",
+        "Invent one-pass marquee or crop fields."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/scene-construction.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/scene-protocol.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "geometry-and-layer-order",
+      "kind": "near-miss",
+      "prompt": "Translate a design with a background, progress track/fill, text aligned to a fixed right edge, and an overlapping icon.",
+      "fixtures": [],
+      "expected": [
+        "Explain box anchors versus painted bounds, opaque RGBA, and draw order.",
+        "Measure the widest string and test rectangle extents beyond origin validation.",
+        "Use packaged asset paths and exact dimensions."
+      ],
+      "forbidden": [
+        "Assume Scene.Validate measures glyph bounds.",
+        "Treat X as distance from the display's right edge for top_right."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/scene-construction.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/scene-protocol.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "preview-fixture-gap",
+      "kind": "regression",
+      "prompt": "A changed scene uses a normal-font title, countdown, and required back display. previewgen regenerates its old front fixture successfully. Is verification complete?",
+      "fixtures": [],
+      "expected": [
+        "Reject the old fixture as proof of changed pixels.",
+        "Identify the limited software renderer and missing font/countdown/back support.",
+        "Report local code checks separately from missing native comparison; use only authorized capture."
+      ],
+      "forbidden": [
+        "Claim a successful preview command rendered the changed scene.",
+        "Upload to a device without task authorization."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/scene-construction.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/scene-protocol.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "unsupported-motion",
+      "kind": "apply",
+      "prompt": "An approved scene includes a local masked wave and one-pass scrolling that the protocol cannot directly express.",
+      "fixtures": [],
+      "expected": [
+        "Explain the absence of scene mask/crop and one-pass marquee controls.",
+        "Use an appropriate already approved packaged asset or resolve a native design revision.",
+        "Keep live values native and runtime priority in the host/reducer."
+      ],
+      "forbidden": [
+        "Invent protocol fields.",
+        "Animate per-refresh positions or rasterize live data into a full-screen video."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/scene-construction.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/scene-protocol.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    }
+  ]
+}

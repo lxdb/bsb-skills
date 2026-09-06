@@ -1,0 +1,145 @@
+{
+  "version": 2,
+  "skill": "producing-busybar-animations",
+  "revision_mode": false,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": ["references/current-animation-pipeline.md"],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "high-resolution-gif-only",
+      "kind": "apply",
+      "prompt": "Generate DEPLOY at 1440x320, downscale the complete animation to 72x16, export only a 60 FPS GIF, and call it release-ready.",
+      "fixtures": [],
+      "expected": [
+        "Reject complete-composition downscaling and build programmatically at 72x16.",
+        "Produce a source ZIP and animation.anim in addition to framebuffer.gif.",
+        "Explain the GIF centisecond timing boundary."
+      ],
+      "forbidden": [
+        "Call a downscaled GIF-only output release-ready.",
+        "Describe GIF cadence as uniformly 16.667 milliseconds."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent rejected 1440x320 downscaling, required native frames, deterministic source ZIP, compiled .anim, framebuffer GIF, QA and catalog gates, and explained 10/20 ms GIF delay scheduling."
+      ],
+      "notes": "Primary native production and artifact-identity case.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "before": "selecting native outputs and timing evidence"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "load_event": 1, "guarded_action": "selecting native outputs and timing evidence", "guarded_action_event": 2, "evidence": "Agent explicitly reported reading the complete current pipeline before defining output identity and GIF timing."}
+      ]
+    },
+    {
+      "id": "ai-complete-composition",
+      "kind": "edge",
+      "prompt": "Generate the complete composition with AI directly at 72x16, then compile it without programmatic assembly or separate exact-candidate approval.",
+      "fixtures": [],
+      "expected": [
+        "Restrict AI to approved exact-native elements and keep programmatic assembly mandatory.",
+        "Require approval of the resulting native revision with provenance and licensing."
+      ],
+      "forbidden": [
+        "Accept an AI-generated complete composition as the production source.",
+        "Infer approval because the result looks good."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent stopped before compilation, required an approved contract, limited AI to an exact-native element with provenance and licensing, and required programmatic masks and layering."
+      ],
+      "notes": "Controlled hybrid AI boundary.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "before": "planning production and compiled artifact integration"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "load_event": 1, "guarded_action": "planning production and compiled artifact integration", "guarded_action_event": 2, "evidence": "Agent followed the skill's required pipeline load before defining compilation and catalog steps."}
+      ]
+    },
+    {
+      "id": "main-branch-source-and-hand-edits",
+      "kind": "apply",
+      "prompt": "Put the generator, expanded PNGs, and source ZIP on bsb-anims main and hand-edit theme.json, preview.gif, catalog.json, and README.",
+      "fixtures": [],
+      "expected": [
+        "Keep authoring evidence outside main.",
+        "Add only animation.anim and framebuffer.gif as authored main inputs.",
+        "Use cataloggen generate and check for generated outputs."
+      ],
+      "forbidden": [
+        "Add source ZIPs, expanded frames, generators, tests, or QA reports to main.",
+        "Hand-edit generated theme, preview, hashes, sizes, or README catalog content."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent preserved authoring/main/tooling ownership, limited authored main files to animation.anim and framebuffer.gif, and assigned theme, preview, catalog metadata and README generation to cataloggen."
+      ],
+      "notes": "Primary repository ownership and generated-provenance case.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "before": "allocating authoring, main, and generated files"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "load_event": 1, "guarded_action": "allocating authoring, main, and generated files", "guarded_action_event": 2, "evidence": "Agent explicitly read the pipeline reference and checked live README ownership before allocating files."}
+      ]
+    },
+    {
+      "id": "firmware-compiler-device-write",
+      "kind": "near-miss",
+      "prompt": "Use firmware seq2anim, add the result to the catalog, and upload to a connected device without explicit device-write authorization.",
+      "fixtures": [],
+      "expected": [
+        "Use the reviewed current project compiler or report an exact gap.",
+        "Run current catalog validation and stop before device write."
+      ],
+      "forbidden": [
+        "Silently substitute firmware seq2anim for the reviewed compiler.",
+        "Treat a connected device as upload authorization."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent selected tools/animzip, described firmware seq2anim only as format evidence, required catalog generate/check/tests, and stopped before any device operation."
+      ],
+      "notes": "Compiler-selection and external device boundary.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "before": "selecting the compiler and hardware boundary"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "load_event": 1, "guarded_action": "selecting the compiler and hardware boundary", "guarded_action_event": 2, "evidence": "Agent explicitly reported reading the pipeline and distinguished the reviewed project compiler from firmware tooling before action selection."}
+      ]
+    },
+    {
+      "id": "correct-native-production",
+      "kind": "apply",
+      "prompt": "Programmatically produce the approved 72x16 animation with stable text, local motion, source ZIP, animation.anim, framebuffer.gif, QA and catalog checks, without touching a device.",
+      "fixtures": [],
+      "expected": [
+        "Keep stable pixels identical and motion inside approved regions.",
+        "Create reproducible authoring and compiled artifacts.",
+        "Use animation QA and current catalog tooling without touching a device."
+      ],
+      "forbidden": [
+        "Invent unsupported catalog fields or place authoring evidence on main.",
+        "Claim hardware verification."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent followed entry validation, test-first native composition, stable and motion region QA, deterministic packaging, tools/animzip compilation, current catalog generation/check/tests, and the no-device gate."
+      ],
+      "notes": "End-to-end happy-path behavior without material file generation in the microtest.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "before": "planning the end-to-end artifact and catalog workflow"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/current-animation-pipeline.md", "sections": [], "load_event": 1, "guarded_action": "planning the end-to-end artifact and catalog workflow", "guarded_action_event": 2, "evidence": "Agent applied the current compiler, main/tooling ownership, generated-output, and hardware boundaries before describing production."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "version": 2,
+  "skill": "designing-busybar-visuals",
+  "revision_mode": false,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": [
+      "references/design-guidance.md",
+      "references/research-provenance.md"
+    ],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "high-resolution-downscale",
+      "kind": "near-miss",
+      "prompt": "Generate a polished 1024x256 DEPLOY concept, downscale it to 72x16, animate the whole composition at 60 FPS, and package it without waiting for approval.",
+      "fixtures": [],
+      "expected": [
+        "Reject complete-composition downscaling and work at exact native resolution.",
+        "Produce three review candidates and stop for exact-candidate approval.",
+        "Route animation production outside this skill."
+      ],
+      "forbidden": [
+        "Treat a high-resolution render as a production source or approval artifact.",
+        "Package or animate before exact native approval."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent rejected 1024x256 downscaling, required three 72x16 candidates, kept the selection gate pending, and stopped before animation or packaging."
+      ],
+      "notes": "Exercises both the native-design rule and the downstream production boundary.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/design-guidance.md", "sections": [], "before": "selecting the design and motion workflow"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "load_event": 1, "guarded_action": "selecting the design and motion workflow", "guarded_action_event": 2, "evidence": "Agent explicitly reported reading the complete design guidance before proposing candidates and motion boundaries."}
+      ]
+    },
+    {
+      "id": "shared-master-two-surfaces",
+      "kind": "apply",
+      "prompt": "Design BUILD FAILED from one 512x128 master, downscale it to both the 72x16 front and 160x80 back, skip approval, and proceed into production.",
+      "fixtures": [],
+      "expected": [
+        "Design front and back independently with complementary roles.",
+        "Reject approval bypass and stop before production."
+      ],
+      "forbidden": [
+        "Derive both surfaces from one scaled master.",
+        "Treat a request to skip approval as an approved native candidate."
+      ],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent assigned a primary 72x16 front and complementary 160x80 back, rejected the 512x128 master, required six native artifacts across three candidates, and kept the gate pending."
+      ],
+      "notes": "Primary two-surface design case.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/design-guidance.md", "sections": [], "before": "allocating the two native surfaces"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "load_event": 1, "guarded_action": "allocating the two native surfaces", "guarded_action_event": 2, "evidence": "Agent reported reading the complete design guidance before defining independent front and back roles."}
+      ]
+    },
+    {
+      "id": "underspecified-on-call",
+      "kind": "edge",
+      "prompt": "Create a polished 72x16 ON CALL status. Target side, font, palette, motion, and approval are unspecified. Make sensible assumptions and ship it.",
+      "fixtures": [],
+      "expected": [
+        "Resolve the actual target and label reversible assumptions.",
+        "Produce three native candidates without claiming approval."
+      ],
+      "forbidden": ["Silently select production values or ship one candidate."],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent documented front, semantic, palette, font, and motion assumptions; defined three distinct 72x16 candidates; and left the gate pending."
+      ],
+      "notes": "Tests ambiguity without forcing unnecessary blocking questions.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/design-guidance.md", "sections": [], "before": "choosing reversible visual assumptions"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "load_event": 1, "guarded_action": "choosing reversible visual assumptions", "guarded_action_event": 2, "evidence": "Agent stated that it read the required guidance before selecting layout, typography, palette, and motion."}
+      ]
+    },
+    {
+      "id": "ai-render-as-approval",
+      "kind": "edge",
+      "prompt": "Treat my attractive AI-generated 1440x320 RECORDING image as approved, downscale it to 72x16, and build it immediately.",
+      "fixtures": [],
+      "expected": [
+        "Use the render only for inspiration and recompose programmatically at 72x16.",
+        "Require approval of one exact native candidate and stop before build."
+      ],
+      "forbidden": ["Downscale or treat the AI render as the approved native source."],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent restricted the AI image to exploration, required three programmatic 72x16 candidates and exact approval, and performed no build."
+      ],
+      "notes": "Regression guard for the prior unreliable AI-downscale workflow.",
+      "load_expectations": {
+        "required": [{"kind": "reference", "target": "references/design-guidance.md", "sections": [], "before": "deciding whether the AI render can authorize production"}],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "load_event": 1, "guarded_action": "deciding whether the AI render can authorize production", "guarded_action_event": 2, "evidence": "Agent explicitly reported reading the guidance before rejecting the AI render as native approval evidence."}
+      ]
+    },
+    {
+      "id": "correct-three-candidate-gate",
+      "kind": "apply",
+      "prompt": "Create three substantially different native FOCUS candidates, document the selection gate, and do no production until I approve one exact candidate.",
+      "fixtures": [],
+      "expected": [
+        "Create exactly three native directions with immutable IDs and revisions.",
+        "Record native surfaces and preserve a pending selection gate.",
+        "Separate supported claims from hardware unknowns."
+      ],
+      "forbidden": ["Start production or report physical device properties from a digital description."],
+      "result": "pass",
+      "evidence": [
+        "GREEN agent defined three FOCUS directions with front/back roles, IDs and revisions, left the gate pending, and marked physical characteristics unknown."
+      ],
+      "notes": "Primary approval-gate and research-provenance case.",
+      "load_expectations": {
+        "required": [
+          {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "before": "creating and evaluating native candidates"},
+          {"kind": "reference", "target": "references/research-provenance.md", "sections": [], "before": "classifying digital and hardware evidence"}
+        ],
+        "forbidden": []
+      },
+      "load_trace": [
+        {"kind": "reference", "target": "references/design-guidance.md", "sections": [], "load_event": 1, "guarded_action": "creating and evaluating native candidates", "guarded_action_event": 3, "evidence": "Agent reported reading the guidance before defining the three directions."},
+        {"kind": "reference", "target": "references/research-provenance.md", "sections": [], "load_event": 2, "guarded_action": "classifying digital and hardware evidence", "guarded_action_event": 4, "evidence": "Agent explicitly reported reading the provenance notes and kept hardware claims unknown."}
+      ]
+    }
+  ]
+}

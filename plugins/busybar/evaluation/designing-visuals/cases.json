@@ -1,0 +1,259 @@
+{
+  "version": 2,
+  "skill": "designing-visuals",
+  "revision_mode": true,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": [
+      "references/design-principles.md",
+      "references/layout-patterns.md",
+      "references/typography-and-color.md",
+      "references/motion-and-state-patterns.md"
+    ],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "layout-by-scenario",
+      "kind": "apply",
+      "prompt": "Choose layouts for a GitHub review request with a long title, Slack setup required, remaining quota, an authentication failure, and CPU/memory/network. Give coordinates, complete copy, product colors, and a reason for each choice.",
+      "fixtures": [],
+      "expected": [
+        "Use product mark plus headline/context, product mark plus message, measured progress, exception takeover, and conditional three-row telemetry respectively.",
+        "Reserve 54px after a 16px stock mark and 2px gap; explain close-range limits of telemetry.",
+        "Use GitHub and Slack identity colors; keep setup, failure, notification reason, and action in familiar language."
+      ],
+      "forbidden": [
+        "Offer generic hierarchy advice without a layout or coordinates.",
+        "Require an external article to choose a layout.",
+        "Replace product identity with the fallback palette or invent codes such as GH, SLK, NTFN, or AUTH."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/design-principles.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/layout-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/typography-and-color.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/motion-and-state-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "stock-icon-and-overflow",
+      "kind": "edge",
+      "prompt": "Use an existing 16x16 product mark with a 120px notification title, a fixed reason, and 18px/s scrolling. Someone suggests a mandatory 2px icon margin or abbreviating the title.",
+      "fixtures": [],
+      "expected": [
+        "Use the full-height icon recipe or explicitly redraw a smaller icon.",
+        "Keep the reason or another familiar anchor visible; budget about 3.7 seconds of movement plus pauses for a 54px viewport.",
+        "Measure the actual font and preserve the complete title with a marquee, second row, back detail, or changed layout."
+      ],
+      "forbidden": [
+        "Silently crop or scale the stock icon.",
+        "Invent an abbreviation merely to avoid marquee."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/design-principles.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/layout-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/typography-and-color.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/motion-and-state-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "glyphs-and-numeric-jitter",
+      "kind": "near-miss",
+      "prompt": "Design a value that changes from 9% to 100%, includes a negative quantity in another state, and uses a locale whose ellipsis glyph is missing.",
+      "fixtures": [],
+      "expected": [
+        "Reserve measured width and fixed numeric anchors.",
+        "Preserve signs/units and choose an explicit supported rewrite for the missing glyph.",
+        "Distinguish advance width, ink bounds, and API anchors."
+      ],
+      "forbidden": [
+        "Fit by character count.",
+        "Substitute a host font while claiming native fidelity."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/design-principles.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/layout-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/typography-and-color.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/motion-and-state-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "states-and-motion",
+      "kind": "apply",
+      "prompt": "Design a running operation, stale data, offline, and a failure that arrives during a success cue. Include normal motion and a static alternative.",
+      "fixtures": [],
+      "expected": [
+        "Keep the state readable at arbitrary frames and without color.",
+        "Stop obsolete success motion, show failure promptly, and use source-specific freshness.",
+        "Do not imply runtime reduced-motion configuration exists without support."
+      ],
+      "forbidden": [
+        "Present stale/offline as valid zero.",
+        "Treat a loader as proof of a healthy source.",
+        "Prescribe a universal safe brightness or flash frequency."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/design-principles.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/layout-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/typography-and-color.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/motion-and-state-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "specification-handoff",
+      "kind": "regression",
+      "prompt": "Prepare a handoff for an already selected native candidate. Its image is correct but font metrics, state variants, and coordinates have not been recorded.",
+      "fixtures": [],
+      "expected": [
+        "Complete the bundled specification with layout, text metrics, layers, states, assets, and motion.",
+        "Bind its relative path and digest in the selected candidate and approval record.",
+        "Use the existing user selection; resolve material missing design choices before production."
+      ],
+      "forbidden": [
+        "Claim image hashes alone explain implementation.",
+        "Add research provenance or external readings as task prerequisites."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/design-principles.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/layout-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/typography-and-color.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/motion-and-state-patterns.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    }
+  ]
+}

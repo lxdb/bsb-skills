@@ -1,0 +1,196 @@
+{
+  "version": 2,
+  "skill": "producing-animations",
+  "revision_mode": true,
+  "reference_policy": "exact-match",
+  "reference_inventory": {
+    "routed": [
+      "references/animation-production.md",
+      "references/animation-format-and-catalog.md"
+    ],
+    "compatibility_only": []
+  },
+  "cases": [
+    {
+      "id": "native-layer-translation",
+      "kind": "apply",
+      "prompt": "Produce the bundled WAIT example as a two-second animation with fixed text, eight icon poses, a static fallback, and no device write.",
+      "fixtures": [],
+      "expected": [
+        "Render 120 72x16 display frames at 60 FPS with 15-frame holds.",
+        "Keep text fixed and movement inside the 16x16 icon region.",
+        "Run QA and compare decoded GIF poses to source images."
+      ],
+      "forbidden": [
+        "Downscale a high-resolution complete composition.",
+        "Change text pixels between poses."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/animation-production.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/animation-format-and-catalog.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "deterministic-build",
+      "kind": "regression",
+      "prompt": "Build the same approved animation twice and prepare compiler-input ZIPs.",
+      "fixtures": [],
+      "expected": [
+        "Compare ordered frame and ZIP hashes.",
+        "Use contiguous frame numbers, metadata, and a root matching the ZIP stem.",
+        "Retain generator/specification/source inputs in authoring."
+      ],
+      "forbidden": [
+        "Include timestamps or unseeded randomness.",
+        "Place generators or source ZIPs on the release catalog branch."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/animation-production.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/animation-format-and-catalog.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "gif-holds-and-seam",
+      "kind": "edge",
+      "prompt": "Explain and verify a 60 FPS source whose visible poses change four times per second. The first and last images differ.",
+      "fixtures": [],
+      "expected": [
+        "Distinguish content changes from playback clock.",
+        "Use positive GIF delays that preserve duration; 250ms holds are exact here.",
+        "Check seam continuity without forcing identical endpoints."
+      ],
+      "forbidden": [
+        "Require 60 unique poses each second.",
+        "Claim GIF supports a uniform 16.667ms delay."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/animation-production.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/animation-format-and-catalog.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "compiler-and-catalog",
+      "kind": "near-miss",
+      "prompt": "Compile a source ZIP using only the installed skill. Then explain how to add it to a catalog if, and only if, a catalog repository is supplied.",
+      "fixtures": [],
+      "expected": [
+        "Use the bundled Python compiler and verify its reported digest without searching for sibling repositories.",
+        "Add only animation.anim and framebuffer.gif as authored release artifacts.",
+        "When a catalog is supplied, choose unique orders, run its generate/check/tests, and inspect generated outputs; otherwise stop with authoring artifacts."
+      ],
+      "forbidden": [
+        "Require tools/animzip, busy-codex, or an assumed local project layout.",
+        "Assume catalog tooling compiles source frames.",
+        "Hand-edit generated hashes or add unsupported catalog keys."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/animation-production.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/animation-format-and-catalog.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    },
+    {
+      "id": "semantic-and-physical-qa",
+      "kind": "apply",
+      "prompt": "QA passes for a loader but the source is stale, the loop obscures a label once, and a screenshot is offered as proof of comfortable brightness.",
+      "fixtures": [],
+      "expected": [
+        "Keep stale data explicit and stop a misleading activity signal.",
+        "Review every semantic pose and fix the covered label even if numeric QA passes.",
+        "Keep source/preview checks separate from physical comfort and playback evidence."
+      ],
+      "forbidden": [
+        "Treat numeric motion limits as semantic or safety certification.",
+        "Treat a screenshot as optical calibration."
+      ],
+      "result": "pending",
+      "evidence": [],
+      "notes": "Fresh-agent behavioral execution is not recorded. See review-results.md for the separate local walkthrough and executable checks.",
+      "load_expectations": {
+        "required": [
+          {
+            "kind": "reference",
+            "target": "references/animation-production.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          },
+          {
+            "kind": "reference",
+            "target": "references/animation-format-and-catalog.md",
+            "sections": [],
+            "before": "choosing the task implementation"
+          }
+        ],
+        "forbidden": []
+      },
+      "load_trace": []
+    }
+  ]
+}

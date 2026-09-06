@@ -230,7 +230,7 @@ def upload_theme(client, args):
 
 def parser():
     root = Parser(description=__doc__, epilog='Global options precede the command. JSON body files accept - for stdin. Downloads require a new output path.')
-    root.add_argument('--url', default=os.environ.get('BUSYBAR_URL'), help='Device origin; defaults to BUSYBAR_URL')
+    root.add_argument('--url', default=os.environ.get('BUSYBAR_URL') or 'http://10.0.4.20', help='Device origin; defaults to BUSYBAR_URL, then http://10.0.4.20')
     root.add_argument('--app', default='bsb-agent', help='Application asset/drawing namespace (default: bsb-agent)')
     root.add_argument('--token-keychain', help='Override automatic macOS bsbctl Keychain lookup; BUSYBAR_TOKEN takes precedence')
     root.add_argument('--timeout', type=duration, default=10, help='HTTP/connect timeout (default: 10s)')

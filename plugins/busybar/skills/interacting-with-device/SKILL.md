@@ -11,7 +11,7 @@ Use the bundled CLI for direct device operations. Read [device commands](referen
 
 Use only the bundled [scripts/bsb_device.py](scripts/bsb_device.py). Examples run from this skill directory; from elsewhere, invoke the script by its resolved absolute path. Do not create a shell wrapper or install a global command.
 
-Set `BUSYBAR_URL` to the device origin supplied for the task. The CLI handles authentication automatically, including the existing bsbctl macOS Keychain credential. Do not retrieve or print the token. Run `python3 scripts/bsb_device.py --json doctor` first. HTTP commands need only Python 3.10+. Event capture additionally needs the packages reported by `doctor`; missing event packages do not prevent HTTP operations.
+Run `python3 scripts/bsb_device.py --json doctor` first, even when no device URL was supplied. The CLI uses `--url`, then a nonempty `BUSYBAR_URL`, then the default device origin `http://10.0.4.20`. Try that default with the bounded doctor check before asking for an address; missing URL configuration alone is not a blocker. If the selected origin cannot be reached, report the attempted origin and actual failure, then ask for a reachable device URL. Keep authentication or device/API errors distinct from missing-address failures, and do not silently switch away from an explicitly configured origin. The CLI handles authentication automatically, including the existing bsbctl macOS Keychain credential. Do not retrieve or print the token. HTTP commands need only Python 3.10+. Event capture additionally needs the packages reported by `doctor`; missing event packages do not prevent HTTP operations.
 
 ## Inspect or debug
 

@@ -1,6 +1,6 @@
 {
   "name": "busybar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Design native BUSY Bar visuals, produce scenes and animations, and interact with the device.",
   "author": {
     "name": "BUSY Bar contributors"

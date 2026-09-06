@@ -11,6 +11,19 @@
   },
   "cases": [
     {
+      "id": "default-origin-first",
+      "kind": "regression",
+      "prompt": "Check the current status of my BUSY Bar. No device URL is supplied and BUSYBAR_URL is absent. Give the next connectivity action and the branches for success, connection refused, and HTTP 401.",
+      "fixtures": [],
+      "expected": ["Runs a bounded bundled doctor check against the default before requesting a URL.", "Reads device status after connectivity succeeds.", "Asks for a reachable URL only after reporting the attempted origin and connection failure.", "Treats HTTP 401 as an authentication blocker, not a missing URL."],
+      "forbidden": ["Asking for BUSYBAR_URL before trying the default.", "Writing to the device for a read-only status request.", "Silently switching away from an explicit configured origin."],
+      "load_expectations": {"required": [], "forbidden": []},
+      "load_trace": [],
+      "result": "pass",
+      "evidence": ["verification.md: status-request reader selected bundled --json doctor without a URL, continued status inspection after success, requested an address after connection refusal, and classified HTTP 401 as authentication failure."],
+      "notes": "Read-only connectivity-decision evaluation; drawing production is outside this case."
+    },
+    {
       "id": "infer-completion-screen",
       "load_expectations": {"required": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "before": "Define notification message and presentation"}], "forbidden": []},
       "load_trace": [{"kind": "skill", "target": "$busybar:designing-visuals", "sections": [], "load_event": 2, "guarded_action": "Define notification message and presentation", "guarded_action_event": 7, "evidence": "verification.md: corrected fresh-reader trace, full design skill and four references read before message decisions."}],

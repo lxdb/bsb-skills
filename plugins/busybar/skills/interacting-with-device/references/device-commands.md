@@ -1,6 +1,6 @@
 # Device commands
 
-Run `python3 scripts/bsb_device.py` from this skill directory, or use the script's resolved absolute path from elsewhere. No global command or installation is needed. Global `--url`, `--app`, `--token-keychain`, and `--timeout` precede the command. `--json` works anywhere. Set `BUSYBAR_URL` once instead of repeating `--url`. The device's local HTTP API may work without a token.
+Run `python3 scripts/bsb_device.py` from this skill directory, or use the script's resolved absolute path from elsewhere. No global command or installation is needed. Global `--url`, `--app`, `--token-keychain`, and `--timeout` precede the command. `--json` works anywhere. Origin precedence is `--url`, nonempty `BUSYBAR_URL`, then `http://10.0.4.20` (the busylib local default). Run the bounded `doctor` check even without URL configuration; ask for a reachable address only after connection failure, reporting the origin attempted. An explicit origin is not silently replaced by the default. The device's local HTTP API may work without a token.
 
 ## Setup and output
 

@@ -1,4 +1,5 @@
 import base64
+import io
 import json
 import os
 from pathlib import Path
@@ -12,11 +13,46 @@ from unittest.mock import patch
 from types import SimpleNamespace
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlsplit
+from urllib.error import URLError
 import zlib
 
 SCRIPT = Path(__file__).resolve().parents[1] / 'scripts' / 'bsb_device.py'
 sys.path.insert(0, str(SCRIPT.parent))
 import bsb_device
+
+
+class DeviceURLTests(unittest.TestCase):
+    def test_doctor_uses_explicit_environment_then_default_origin(self):
+        for environment, flags, origin in [
+            ({}, [], 'http://10.0.4.20'),
+            ({'BUSYBAR_URL': ''}, [], 'http://10.0.4.20'),
+            ({'BUSYBAR_URL': 'http://device.test'}, [], 'http://device.test'),
+            ({'BUSYBAR_URL': 'http://device.test'}, ['--url', 'http://chosen.test'], 'http://chosen.test'),
+        ]:
+            with self.subTest(origin=origin, environment=environment, flags=flags):
+                requests = []
+
+                def open_request(request, timeout):
+                    requests.append((request.full_url, timeout))
+                    return io.BytesIO(b'{}')
+
+                with patch.dict(os.environ, {**environment, 'BUSYBAR_TOKEN': 'fixture-token'}, clear=True), patch('bsb_device.build_opener', return_value=SimpleNamespace(open=open_request)):
+                    result = bsb_device.run(bsb_device.parser().parse_args([*flags, '--timeout', '2s', 'doctor']))
+                self.assertTrue(result['reachable'], result)
+                self.assertEqual(requests, [(origin + '/api/version', 2), (origin + '/api/status/system', 2)])
+
+    def test_default_connection_failure_is_reported_after_attempt(self):
+        requests = []
+
+        def refuse_connection(request, timeout):
+            requests.append(request.full_url)
+            raise URLError('connection refused')
+
+        with patch.dict(os.environ, {'BUSYBAR_TOKEN': 'fixture-token'}, clear=True), patch('bsb_device.build_opener', return_value=SimpleNamespace(open=refuse_connection)):
+            result = bsb_device.run(bsb_device.parser().parse_args(['doctor']))
+        self.assertEqual(requests, ['http://10.0.4.20/api/version'])
+        self.assertFalse(result['reachable'])
+        self.assertIn('connection refused', result['error']['message'])
 
 
 class KeychainTests(unittest.TestCase):

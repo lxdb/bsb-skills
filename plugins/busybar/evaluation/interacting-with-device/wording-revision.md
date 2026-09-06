@@ -2,6 +2,7 @@
 
 | Previous contract | Previous evidence or location | Final home or status | Rationale | Verification case |
 | --- | --- | --- | --- | --- |
+| Require a supplied URL before checking the device | Start section; observed chat stopped without a default attempt | Rephrased in Start and command reference; CLI now defaults to busylib local origin | Try the default before treating an absent URL as a blocker; preserve explicit-origin precedence and error distinctions | default-origin-first; DeviceURLTests |
 | Proactively infer completion and attention notifications | Skill description and Draw section | Preserved in description and Draw section | Invocation remains proactive; presentation follows the design skill | infer-completion-screen, infer-blocker-screen |
 | Compress text to fit; explain it in conversation | Proactive paragraph; prior CHOOSE ENV recipe | removed-stale | Conflicts with designing-visuals recognition, complete language, and independent front meaning | infer-blocker-screen |
 | Brief text bypasses design approval | Finish section | removed-stale | No blanket bypass of the owning design workflow | infer-completion-screen |

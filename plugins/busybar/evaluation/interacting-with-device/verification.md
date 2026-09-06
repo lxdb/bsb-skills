@@ -26,6 +26,10 @@ The sibling edits only append those handoff paragraphs. Existing selection, nati
 
 ## Executable checks
 
+### Default-origin status evaluation
+
+A fresh reader evaluated `Check the current status of my BUSY Bar` with no supplied URL or BUSYBAR_URL. It read the complete interaction skill and selected the bundled `--json doctor` command without asking for an address. On success it continued read-only status inspection, including `--json busy status`; on connection refusal it reported the attempted default and requested a reachable URL; on HTTP 401 it reported authentication failure without changing origins or retrieving credentials. The reader made no device calls or writes. The status-based decision case passes; this is not a live status execution claim.
+
 ### Proactive inference recheck
 
 The original inference check produced `draw --text '23 TESTS PASS' --seconds 10`, `draw --text 'CHOOSE ENV' --seconds 10`, and no repeated notification for an unchanged blocker. The two positive passes are withdrawn: they established proactive intent, but did not check the design-skill handoff, complete familiar language, native fit, or approval. The no-repeat result remains valid. The revised positive cases require those missing checks; proposed text alone is not a verified design. See [wording revision ledger](wording-revision.md) for preserved and removed contracts.
